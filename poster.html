@@ -6,10 +6,10 @@
 <header class="head"><div class="eyebrow">PERSONAL TRAINING SYSTEM</div><h1>FULL-BODY TRAINING</h1><p>Scan the workout you need. One Vercel domain • mobile-first • no logging required.</p></header>
 <section class="schedule"><div class="day"><b>MONDAY</b><span>Upper A</span></div><div class="day"><b>TUESDAY</b><span>Lower A + Core</span></div><div class="day"><b>WEDNESDAY</b><span>Rest</span></div><div class="day"><b>THURSDAY</b><span>Upper B</span></div><div class="day"><b>FRIDAY</b><span>Lower B + Core</span></div><div class="day"><b>SATURDAY</b><span>Rest / light activity</span></div><div class="day"><b>SUNDAY</b><span>Rest</span></div><div class="day"><b>FREQUENCY</b><span>Each major muscle/function 2× weekly</span></div></section>
 <section class="qrgrid">
-<article class="qr mainqr"><img src="qr-home.svg" alt="QR code for workout home"><div><h2>OPEN FULL WORKOUT PLAN</h2><p>Scan here for the complete weekly schedule, coverage, instructions and all workout pages.</p></div></article>
-<article class="qr"><img src="qr-upperA.svg" alt="QR code for Upper A"><div><h2>MONDAY · UPPER A</h2><p>Chest • Back • Shoulders • Arms • Forearms</p></div></article>
-<article class="qr"><img src="qr-lowerA.svg" alt="QR code for Lower A"><div><h2>TUESDAY · LOWER A + CORE</h2><p>Quads • Hamstrings • Glutes • Calves • Tibialis • Core</p></div></article>
-<article class="qr"><img src="qr-upperB.svg" alt="QR code for Upper B"><div><h2>THURSDAY · UPPER B</h2><p>Chest • Back • Shoulders • Arms • Forearms</p></div></article>
-<article class="qr"><img src="qr-lowerB.svg" alt="QR code for Lower B"><div><h2>FRIDAY · LOWER B + CORE</h2><p>Quads • Hamstrings • Glutes • Calves • Tibialis • Core</p></div></article></section>
+<article class="qr mainqr"><canvas class="qrbox" data-url="https://workoutp.vercel.app/"></canvas><div><h2>OPEN FULL WORKOUT PLAN</h2><p>Scan here for the complete weekly schedule, coverage, instructions and all workout pages.</p></div></article>
+<article class="qr"><canvas class="qrbox" data-url="https://workoutp.vercel.app/?w=upperA"></canvas><div><h2>MONDAY · UPPER A</h2><p>Chest • Back • Shoulders • Arms • Forearms</p></div></article>
+<article class="qr"><canvas class="qrbox" data-url="https://workoutp.vercel.app/?w=lowerA"></canvas><div><h2>TUESDAY · LOWER A + CORE</h2><p>Quads • Hamstrings • Glutes • Calves • Tibialis • Core</p></div></article>
+<article class="qr"><canvas class="qrbox" data-url="https://workoutp.vercel.app/?w=upperB"></canvas><div><h2>THURSDAY · UPPER B</h2><p>Chest • Back • Shoulders • Arms • Forearms</p></div></article>
+<article class="qr"><canvas class="qrbox" data-url="https://workoutp.vercel.app/?w=lowerB"></canvas><div><h2>FRIDAY · LOWER B + CORE</h2><p>Quads • Hamstrings • Glutes • Calves • Tibialis • Core</p></div></article></section>
 <div class="footer">Use the same website on your phone. Tap “Watch Technique” beside any exercise when you need a form reference.</div></div>
-<button class="print" onclick="window.print()">Print Poster</button></body></html>
+<button class="print" onclick="window.print()">Print Poster</button><script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.4/build/qrcode.min.js"></script><script>document.querySelectorAll(".qrbox").forEach(c=>QRCode.toCanvas(c,c.dataset.url,{width:190,margin:2,errorCorrectionLevel:"H"}));</script></body></html>
