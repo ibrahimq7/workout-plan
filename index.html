@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#07111f"><title>My Full-Body Training</title>
+<style>
+:root{--bg:#07111f;--card:#0d1b2d;--card2:#12243a;--text:#f4f7fb;--muted:#a9b7c8;--accent:#63d4ff;--line:#263b55;--ok:#7be0a8}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#07111f,#0a1626);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif}main{max-width:780px;margin:auto;padding:18px 15px 45px}.eyebrow{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:800}.hero{padding:18px 3px}.hero h1{font-size:clamp(2.1rem,9vw,3.4rem);line-height:1;margin:8px 0}.hero p{color:var(--muted);margin:0}.nav{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:16px 0}.nav a{padding:12px 8px;border:1px solid var(--line);border-radius:13px;background:var(--card);color:var(--text);text-decoration:none;text-align:center;font-weight:800}.nav a.active{border-color:var(--accent)}.card{background:rgba(13,27,45,.96);border:1px solid var(--line);border-radius:19px;padding:17px;margin:12px 0}.card h2{margin:0 0 4px}.sub{color:var(--muted);font-size:.9rem}.exercise{border-top:1px solid var(--line);padding:15px 0}.exercise:first-child{border-top:0}.exercise h3{margin:0 0 6px;font-size:1.05rem}.meta{color:var(--muted);font-size:.88rem}.watch{display:inline-block;margin-top:9px;padding:8px 11px;border-radius:10px;background:var(--card2);color:#e5f9ff;text-decoration:none;font-weight:800;font-size:.84rem}.badge{float:right;color:var(--ok);font-size:.7rem;font-weight:900;letter-spacing:.08em}.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.pill{background:var(--card2);border-radius:10px;padding:9px;font-size:.84rem}.note{border-left:3px solid var(--accent);padding:11px 13px;background:#091727;border-radius:7px;color:var(--muted);font-size:.88rem}.footer{text-align:center;color:var(--muted);font-size:.76rem;margin-top:24px}@media(min-width:650px){.nav{grid-template-columns:repeat(4,1fr)}.grid{grid-template-columns:repeat(3,1fr)}}
+</style></head><body><main id="app"></main>
+<script>
+const P={
+upperA:{title:"Upper A",day:"Monday",focus:"Chest • Back • Shoulders • Arms • Forearms",items:[
+["Barbell Bench Press","Chest, triceps, front delts","3 × 6–10","2–3 min","barbell bench press technique"],
+["Barbell Bent-Over Row","Lats, rhomboids, mid traps, rear delts","3 × 6–10","2–3 min","barbell bent over row technique"],
+["Incline Dumbbell Press","Upper chest, front delts, triceps","3 × 8–12","2 min","incline dumbbell press technique"],
+["One-Arm Dumbbell Row","Lats and upper/mid back","3 × 8–12 / side","90–120 sec","one arm dumbbell row technique"],
+["Dumbbell Lateral Raise","Side delts","3 × 10–15","60–90 sec","dumbbell lateral raise technique"],
+["Dumbbell Rear-Delt Raise","Rear delts and upper back","3 × 10–15","60–90 sec","dumbbell rear delt raise technique"],
+["Hammer Curl","Biceps, brachialis, brachioradialis","3 × 8–12","60–90 sec","dumbbell hammer curl technique"],
+["Overhead Dumbbell Triceps Extension","Triceps, especially long head","3 × 8–12","60–90 sec","overhead dumbbell triceps extension technique"],
+["Wrist Curl + Reverse Wrist Curl","Forearm flexors and extensors","2 × 12–20 each","60 sec","wrist curl reverse wrist curl technique"],
+["Side-Lying Dumbbell External Rotation","Rotator-cuff function / shoulder control","2 × 12–15 / side","60 sec","side lying dumbbell external rotation technique"]]},
+lowerA:{title:"Lower A + Core",day:"Tuesday",focus:"Quads • Hamstrings • Glutes • Adductors • Calves • Tibialis • Core",items:[
+["Barbell Back Squat","Quads, glutes, adductors, trunk","3 × 6–10","2–3 min","barbell back squat technique"],
+["Barbell Romanian Deadlift","Hamstrings, glutes, spinal erectors","3 × 6–10","2–3 min","barbell Romanian deadlift technique"],
+["Bulgarian Split Squat","Quads, glutes, adductors","3 × 8–12 / leg","90–120 sec","Bulgarian split squat technique"],
+["Barbell Hip Thrust","Glutes","3 × 8–12","90–120 sec","barbell hip thrust technique"],
+["Dumbbell Leg Curl","Hamstrings","3 × 10–15","60–90 sec","dumbbell leg curl bench technique"],
+["Cossack Squat","Adductors, glutes, quads","2 × 8–12 / side","60–90 sec","Cossack squat technique"],
+["Standing Calf Raise","Gastrocnemius","3 × 10–15","60–90 sec","standing calf raise technique"],
+["Seated Dumbbell Calf Raise","Soleus","3 × 12–20","60–90 sec","seated dumbbell calf raise technique"],
+["Tibialis Raises","Tibialis anterior","3 × 15–20","60 sec","tibialis raise technique"],
+["Weighted Crunch","Rectus abdominis","3 × 10–15","60 sec","weighted crunch technique"],
+["Dumbbell Side Bend","Obliques / lateral trunk","2 × 10–15 / side","60 sec","dumbbell side bend technique"],
+["Plank","Deep core / anti-extension","2 × 30–60 sec","60 sec","plank proper form"]]},
+upperB:{title:"Upper B",day:"Thursday",focus:"Chest • Back • Shoulders • Arms • Forearms",items:[
+["Incline Barbell Press","Upper chest, front delts, triceps","3 × 6–10","2–3 min","incline barbell press technique"],
+["Chest-Supported Dumbbell Row","Rhomboids, mid traps, lats, rear delts","3 × 8–12","90–120 sec","chest supported dumbbell row technique"],
+["Dumbbell Flat Press","Chest, triceps, front delts","3 × 8–12","2 min","dumbbell flat bench press technique"],
+["Dumbbell Pullover","Lats, chest, serratus contribution","3 × 8–12","90 sec","dumbbell pullover technique"],
+["Dumbbell Shoulder Press","Front and side delts, triceps","3 × 6–10","2 min","dumbbell shoulder press technique"],
+["Dumbbell Lateral Raise","Side delts","3 × 10–15","60–90 sec","dumbbell lateral raise technique"],
+["Incline Bench Rear-Delt Raise","Rear delts and upper back","3 × 10–15","60–90 sec","incline rear delt raise technique"],
+["EZ-Bar Curl","Biceps","3 × 8–12","60–90 sec","EZ bar curl technique"],
+["Reverse EZ-Bar Curl","Brachialis, brachioradialis, forearms","3 × 8–12","60–90 sec","reverse EZ bar curl technique"],
+["Close-Grip Bench Press","Triceps and chest","3 × 6–10","2 min","close grip bench press technique"],
+["Wrist Curl + Reverse Wrist Curl","Forearm flexors and extensors","2 × 12–20 each","60 sec","wrist curl reverse wrist curl technique"],
+["Side-Lying Dumbbell External Rotation","Rotator-cuff function / shoulder control","2 × 12–15 / side","60 sec","side lying dumbbell external rotation technique"]]},
+lowerB:{title:"Lower B + Core",day:"Friday",focus:"Quads • Hamstrings • Glutes • Adductors • Calves • Tibialis • Core",items:[
+["Front Squat / Goblet Squat","Quads, glutes, adductors, trunk","3 × 6–10","2–3 min","front squat technique"],
+["Barbell Hip Thrust","Glutes","3 × 8–12","90–120 sec","barbell hip thrust technique"],
+["Romanian Deadlift","Hamstrings, glutes, spinal erectors","3 × 8–12","2 min","Romanian deadlift technique"],
+["Reverse Lunge","Quads, glutes, adductors","3 × 8–12 / leg","90–120 sec","reverse lunge technique"],
+["Heel-Elevated Goblet Squat","Quads","2 × 10–15","90 sec","heel elevated goblet squat technique"],
+["Dumbbell Leg Curl","Hamstrings","3 × 10–15","60–90 sec","dumbbell leg curl bench technique"],
+["Standing Calf Raise","Gastrocnemius","3 × 10–15","60–90 sec","standing calf raise technique"],
+["Seated Calf Raise","Soleus","3 × 12–20","60–90 sec","seated dumbbell calf raise technique"],
+["Tibialis Raises","Tibialis anterior","3 × 15–20","60 sec","tibialis raise technique"],
+["Reverse Crunch","Rectus abdominis / trunk control","3 × 10–15","60 sec","reverse crunch technique"],
+["Side Plank","Obliques + lateral core stability","2 × 30–60 sec / side","60 sec","side plank proper form"],
+["Bird Dog","Spinal stabilization / deep core","2 × 8–12 / side","60 sec","bird dog proper form"]]}
+};
+function yt(q){return "https://www.youtube.com/results?search_query="+encodeURIComponent(q)}
+function links(k){return [["upperA","UPPER A"],["lowerA","LOWER A"],["upperB","UPPER B"],["lowerB","LOWER B"]].map(([id,n])=>'<a class="'+(k===id?"active":"")+'" href="?w='+id+'">'+n+'</a>').join("")}
+function home(){return '<section class="hero"><div class="eyebrow">Personal training system</div><h1>Full-Body Training</h1><p>4-day Upper / Lower • simple daily follow-through • no workout logging.</p></section><nav class="nav">'+links("")+'</nav><section class="card"><span class="badge">WEEKLY ROUTINE</span><h2>Follow this schedule</h2><div class="exercise"><h3>Monday — Upper A</h3><div class="sub">Chest • Back • Shoulders • Arms • Forearms</div></div><div class="exercise"><h3>Tuesday — Lower A + Core</h3><div class="sub">Lower body • calves • tibialis • core</div></div><div class="exercise"><h3>Wednesday — Rest</h3></div><div class="exercise"><h3>Thursday — Upper B</h3><div class="sub">Chest • Back • Shoulders • Arms • Forearms</div></div><div class="exercise"><h3>Friday — Lower B + Core</h3><div class="sub">Lower body • calves • tibialis • core</div></div><div class="exercise"><h3>Saturday — Rest / light activity</h3></div><div class="exercise"><h3>Sunday — Rest</h3></div></section><section class="card"><h2>Coverage</h2><p class="sub">Every major and meaningful resistance-trainable muscle/function is deliberately covered twice weekly. Tiny anatomical muscles are not treated as separate bodybuilding targets.</p><div class="grid"><div class="pill">Chest</div><div class="pill">Lats & back</div><div class="pill">Traps & rhomboids</div><div class="pill">Front / side / rear delts</div><div class="pill">Biceps / brachialis</div><div class="pill">Triceps</div><div class="pill">Forearm flexors / extensors</div><div class="pill">Quads</div><div class="pill">Hamstrings</div><div class="pill">Glutes</div><div class="pill">Adductors</div><div class="pill">Gastrocnemius / soleus</div><div class="pill">Tibialis anterior</div><div class="pill">Abs / obliques</div><div class="pill">Deep core / spinal stability</div><div class="pill">Rotator-cuff function</div></div></section><section class="card"><h2>How to train</h2><p class="note"><b>1.</b> Warm up. <b>2.</b> Follow exercises in order. <b>3.</b> Use Watch Technique when needed. <b>4.</b> Keep controlled form. <b>5.</b> Most sets finish with about 1–3 good reps in reserve. <b>6.</b> Progress gradually. No logging required.</p></section>'}
+function page(k){let p=P[k];return '<section class="hero"><div class="eyebrow">'+p.day+'</div><h1>'+p.title+'</h1><p>'+p.focus+'</p></section><nav class="nav">'+links(k)+'</nav><section class="card"><span class="badge">FOLLOW IN ORDER</span><h2>Today’s workout</h2><p class="sub">Complete 1 → '+p.items.length+'.</p>'+p.items.map((x,i)=>'<div class="exercise"><h3>'+String(i+1).padStart(2,"0")+' · '+x[0]+'</h3><div class="meta"><b>Targets:</b> '+x[1]+'<br><b>Work:</b> '+x[2]+' &nbsp; <b>Rest:</b> '+x[3]+'</div><a class="watch" href="'+yt(x[4])+'" target="_blank" rel="noopener">▶ Watch Technique</a></div>').join("")+'</section><section class="card"><p class="note"><b>Effort:</b> quality technique first. Do not chase failure on every set. Increase resistance only when the prescribed range is achieved with clean form.</p></section>'}
+let k=new URLSearchParams(location.search).get("w");document.getElementById("app").innerHTML=(k&&P[k]?page(k):home())+'<div class="footer">Train consistently • recover well • repeat</div>';
+</script></body></html>
